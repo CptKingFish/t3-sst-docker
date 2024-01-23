@@ -1,7 +1,7 @@
 ##### DEPENDENCIES
 
 FROM --platform=linux/amd64 node:20-alpine AS deps
-RUN apk add --no-cache libc6-compat openssl1.1-compat
+RUN apk add --no-cache libc6-compat openssl
 WORKDIR /app
 
 # Install Prisma Client - remove if not using Prisma
@@ -23,7 +23,6 @@ RUN \
 
 FROM --platform=linux/amd64 node:20-alpine AS builder
 ARG DATABASE_URL
-ARG NEXT_PUBLIC_CLIENTVAR
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
