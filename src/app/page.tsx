@@ -42,6 +42,9 @@ export default async function Home() {
           <p className="text-2xl text-white">
             {hello ? hello.greeting : "Loading tRPC query..."}
           </p>
+          <p className="text-2xl text-white">
+            {process.env.NEXT_PUBLIC_CLIENTVAR ?? "client var not found."}
+          </p>
         </div>
 
         <CrudShowcase />
